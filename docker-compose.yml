@@ -1,0 +1,19 @@
+version: '4.25'
+
+services:
+  django:
+    container_name: django
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./dcelery:/usr/src/app
+    ports:
+      - 8001:8000
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=django-insecure-h=l^r7lb$%v(8twf8y#0ngnk65sdfh8+t4dw^4oe&pwy33aaf=
+      - ALLOWED_HOSTS=localhost,127.0.0.1
+
+
